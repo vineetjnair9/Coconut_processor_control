@@ -5,8 +5,8 @@
 //#include <utility/Adafruit_MS_PWMServoDriver> 
 
 Servo myServo;   // Define any servo name
-int buttonMain = 13; // ON/OFF Button overall
-int buttonSaw = 12; // Button to turn mechanism ON/OFF after saw 
+int button1 = 13; // ON/OFF Button overall
+int button2 = 12; // Button to turn mechanism ON/OFF after saw 
 int actuatorPin = 11; // Pin on shield connected to motor controller
 int tServoPin = 10; 
 int cServoPin = 9;
@@ -38,7 +38,7 @@ void setup() {
 }
 
  void loop() {
-  
+
   // drilling hole code
   // step(#steps, direction, steptype)  
   // steptype = double for higher torque
