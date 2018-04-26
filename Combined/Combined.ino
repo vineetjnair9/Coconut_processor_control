@@ -32,13 +32,23 @@ Adafruit_StepperMotor *meatMotor = AFMS.getStepper(200, 1);
 Servo cServo;   // clamp servo
 Servo tServo;   // track servo
 
+const int Button1 = 2;     // the number of the pushbutton pin
+
+// variables will change:
+int buttonState = 0;         // variable for reading the pushbutton status
+
+void setup() {
+  // initialize the pushbutton pin as an input:
+  pinMode(Button1, INPUT);
+}
+
 void setup() {
   drillMotor->setSpeed(drillSpeed); // drill motor 
   meatMotor->setSpeed(meatSpeed); // meat scraper default speed
+  AFMS.begin();
 }
 
  void loop() {
-
   // drilling hole code
   // step(#steps, direction, steptype)  
   // steptype = double for higher torque
