@@ -3,17 +3,31 @@
 #include <Servo.h>
 #include <Wire.h>
 //#include <utility/Adafruit_MS_PWMServoDriver> 
-
 Servo myServo;   // Define any servo name
-int button1 = 13; // ON/OFF Button overall
-int button2 = 12; // Button to turn mechanism ON/OFF after saw 
-int actuatorPin = 11; // Pin on shield connected to motor controller
-int tServoPin = 10; 
-int cServoPin = 9;
+
+#define enB 0
+#define in4 1
+#define in3 2
+#define actuatorPin 3 // Pin on shield connected to motor controller
+#define tServoPin 1
+#define cServoPin 9
+#define drillPort 2 // Ports M3 and M4
+#define meatPort 1 // Ports M1 and M2
+
+int rotDirection = 0;
+int pressed = false;
+
+pinMode(enB, OUTPUT);
+pinMode(in3, OUTPUT);
+pinMode(in4, OUTPUT);
+pinMode(actuatorPin, INPUT);
+
+// Set initial rotation direction
+digitalWrite(in3, LOW);
+digitalWrite(in4, HIGH);
+
 int drillSteps = 100; // both of these should be the same for the same motor type right?
 int meatSteps = 200; // Steps per revolution
-int drillPort = 2; // Ports M3 and M4
-int meatPort = 1; // Ports M1 and M2
 int drillSpeed = 255; // default speed (rpm)
 int meatSpeed = 255; 
 int PWMopen = 100; // To open the clamps with actuator
@@ -22,33 +36,46 @@ int drillRev = 1600; // no. of revolutions needed to drill into coconut
 int meatRev = 1600; // no. of revolutions needed to scrape off all meat
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield(); // Create the motor shield object with the default I2C address
-// Or, create it with a different I2C address (say for stacking)
-// Adafruit_MotorShield AFMS = Adafruit_MotorShield(0x61); 
 
-// Connect a stepper motor with 200 steps per revolution (1.8 degree)
-// to motor port #2 (M3 and M4)
+// Connect a stepper motor with 200 steps per revolution (1.8 degree) to motor port #2 (M3 and M4)
 Adafruit_StepperMotor *drillMotor = AFMS.getStepper(100, 2);
 Adafruit_StepperMotor *meatMotor = AFMS.getStepper(200, 1);
 Servo cServo;   // clamp servo
 Servo tServo;   // track servo
 
-const int Button1 = 2;     // the number of the pushbutton pin
+const int drill = ;     
+const int servoWater = ;     // 90 servo rotation to drain water
+const int carryForward = ;    // lead screw moving forward (servo +ve drn)
+const int clampSaw = ;    // continuous servo rotation during saw cutting
+const int clampClose = ;    // Linear actuator extending out
+const int clampOpen = ;    // Linear actuator retracting back
+const int meatScraper1 = ;    // Stepper rotate down 1st to cut
+const int meatScraper2 = ;    // Stepper rotate back up after cutting 
+const int carryBackward = ; // Carriage moving back
 
 // variables will change:
-int buttonState = 0;         // variable for reading the pushbutton status
+int drillState = 0;         // variable for reading the pushbutton status
+int waterState = 0;
+int moveForward = 0;
+int sawRotate = 0;
+int closeClamp = 0;
+int openClamp = 0;
+int meat1 = 0;
+int meat2 = 0;
+int backwards =0;
 
 void setup() {
   // initialize the pushbutton pin as an input:
-  pinMode(Button1, INPUT);
-}
-
-void setup() {
+pinMode(, INPUT)
   drillMotor->setSpeed(drillSpeed); // drill motor 
   meatMotor->setSpeed(meatSpeed); // meat scraper default speed
   AFMS.begin();
 }
 
  void loop() {
+  
+
+  
   // drilling hole code
   // step(#steps, direction, steptype)  
   // steptype = double for higher torque
