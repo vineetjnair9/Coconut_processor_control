@@ -7,7 +7,6 @@ For use with the Adafruit Motor Shield v2
 ---->	http://www.adafruit.com/products/1438
 */
 
-
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
 #include "utility/Adafruit_MS_PWMServoDriver.h"
@@ -21,7 +20,6 @@ Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 // to motor port #2 (M3 and M4)
 Adafruit_StepperMotor *myMotor = AFMS.getStepper(100, 2);
 Adafruit_StepperMotor *myMotor1 = AFMS.getStepper(200, 1);
-
 
 void setup() {
   Serial.begin(9600);           // set up Serial library at 9600 bps

@@ -1,0 +1,20 @@
+inByte == '1' // DrillIntent
+inByte == 'c' // StopDrillingIntent
+inByte == '2' // PullOutIntent
+inByte == '3' // DrainWaterIntent
+
+    else if (inByte == '4') { // Move Carriage Forward
+
+    else if (inByte == '5') { // Move Carriage Backward
+
+    else if (inByte == '6') { // Stop everything
+
+    else if (inByte == '7') { // Saw cutting
+
+    else if (inByte == '8') { // Move Clamps In
+
+    else if (inByte == '9') { // Move Clamps Out
+
+    else if (inByte == 'a') {  // Meat scraper cut path
+
+    else if (inByte == 'b') {  // Meat scraper reverse path
